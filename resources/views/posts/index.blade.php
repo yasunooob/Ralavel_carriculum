@@ -16,6 +16,9 @@
                     <p class='body'>{{ $post->body }}</p>
                 </div>
             @endforeach
+           <div class = 'pagination'>
+               {{ $posts->links() }}
+           </div>
         </div>
     </body>
 </html>
