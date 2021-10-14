@@ -20,11 +20,20 @@ class PostController extends Controller
     {
     return view('posts/create');
     }
-    public function store(PostRequest $request, Post $post)
+    public function store(Post $post, PostRequest $request)
     {
         $input = $request['post'];
         $post->fill($input)->save();
         return redirect('/posts/' . $post->id);
     }
-
+    public function edit(Post $post)
+    {
+        return view('posts/edit')->with(['post' => $post]);
+    }
+    public function update(Post $post, PostRequest $request)
+    {
+        $new = $request['post'];
+        $post->fill($new)->save();
+        return redirect('/posts/' . $post->id);
+    }
 }
