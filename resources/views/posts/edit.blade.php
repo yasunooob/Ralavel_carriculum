@@ -2,12 +2,13 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>Blog</title>
+        <title>編集画面</title>
     </head>
     <body>
         <h1>Blog Name</h1>
-        <form action="/posts" method="POST">
+        <form action="/posts/{{ $post->id }}" method="POST">
             @csrf
+            @method('PUT')
             <div class="title">
                 <h2>Title</h2>
                 <input type="text" name="post[title]" placeholder="タイトル" value="{{ $post->title }}"/>
